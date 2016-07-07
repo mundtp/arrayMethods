@@ -22,22 +22,22 @@ console.assert(total === 24)
 // ----------------------------
 
 function reduce(array, callback){
-    var accumulator
-    for(var i = 0; i < array.length; i ++){
-        callback(accumulator, array[i])
+    var accumulator = array[0]
+    for(var i = 1; i < array.length; i ++){
+       accumulator = callback(accumulator, array[i])
     }
+    return accumulator
 }
 
 // tests
 // ---
 
-// console.assert(
-//     reduce([1, 2, 3, 4], function(accumulator, element){ return accumulator * element }) === 24
-// )
-// console.assert(
-//     reduce([1, 2, 3, 4], function(accumulator, element){ return accumulator + element }) === 10
-// )
-
+console.assert(
+    reduce([1, 2, 3, 4], function(accumulator, element){ return accumulator * element }) === 24
+)
+console.assert(
+    reduce([1, 2, 3, 4], function(accumulator, element){ return accumulator + element }) === 10
+)
 
 
 
@@ -111,7 +111,6 @@ console.assert(people[0].name === "Brian")
 console.assert(people[1].name === "Jesse")
 console.assert(people[3].name === "Matt")
 
-// I had to change the 2 to a 3 in the last console.assert
 
 // ----------------------------
 // Using Array.map(), Array.filter(), and Array.sort() on the
@@ -148,4 +147,4 @@ var results = customers
 // ---
 console.assert(results[0].fullname === "Jack White")
 console.assert(results[2].fullname === "John Smith")
-console.log('done except for reduce')
+console.log('completed')
